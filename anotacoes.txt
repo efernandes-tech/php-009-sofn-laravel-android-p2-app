@@ -1,0 +1,7 @@
+PHP - SchoolOfNet - Laravel com Android - Parte 2
+
+# Anotações.
+- Criando projeto.
+    Android Studio
+    API 23: Android 6.0 (Marshmallow)
+    Play no Genymotion
