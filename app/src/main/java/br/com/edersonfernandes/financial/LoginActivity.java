@@ -361,10 +361,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
                 finish();
             } else {
-                Toast.makeText(getApplicationContext(), "Invalid Credentials", Toast.LENGTH_SHORT);
-
-                mPasswordView.setError(getString(R.string.error_incorrect_password));
-                mPasswordView.requestFocus();
+                Toast.makeText(LoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT);
             }
         }
 
@@ -375,4 +372,3 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 }
-
