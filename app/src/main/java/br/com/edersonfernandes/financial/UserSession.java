@@ -37,6 +37,10 @@ public class UserSession {
         editor.commit();
     }
 
+    public String getUserToken() {
+        return sharedPreferences.getString("token", "");
+    }
+
     public Boolean isUserLoggedIn() {
         return sharedPreferences.getString("token", "").length() > 0;
     }
