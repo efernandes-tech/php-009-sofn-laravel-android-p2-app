@@ -13,11 +13,18 @@ public class SplashScreen extends AppCompatActivity implements Runnable {
         setContentView(R.layout.activity_splash_screen);
 
         Handler handler = new Handler();
-        handler.postDelayed(this, 3000);
+        handler.postDelayed(this, 2000);
     }
 
     public void run() {
-        startActivity(new Intent(this, LoginActivity.class));
+        UserSession userSession = UserSession.getInstance(getApplicationContext());
+
+        if (! userSession.isUserLoggedIn()) {
+            startActivity(new Intent(this, LoginActivity.class));
+        } else {
+            startActivity(new Intent(this, LoginActivity.class));
+        }
+
         finish();
     }
 

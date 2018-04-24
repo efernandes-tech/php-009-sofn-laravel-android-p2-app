@@ -319,6 +319,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             JSONObject jsonObject = new JSONObject();
 
+            Boolean returnValue = false;
+
             try {
                 jsonObject.put("email", mEmail);
                 jsonObject.put("password", mPassword);
@@ -331,6 +333,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             Integer codeStatus = null;
 
+            JSONObject result = null;
+
             try {
                 bodyRequest = new StringEntity(jsonObject.toString());
                 clientPost.setEntity(bodyRequest);
@@ -338,17 +342,25 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
                 String json = EntityUtils.toString(response.getEntity());
 
-                JSONObject result = new JSONObject(json);
+                result = new JSONObject(json);
                 codeStatus = response.getStatusLine().getStatusCode();
+
+                if (codeStatus != null && codeStatus != 401) {
+                    UserSession userSession = UserSession.getInstance(getApplicationContext());
+
+                    userSession.setUser(result.getString("token"));
+
+                    returnValue = true;
+                }
+
+                if (codeStatus != null && codeStatus == 401) {
+                    returnValue = false;
+                }
             } catch (IOException | JSONException e) {
                 e.printStackTrace();
             }
 
-            if (codeStatus != null && codeStatus != 401) {
-                return true;
-            }
-
-            return false;
+            return returnValue;
         }
 
         @Override
