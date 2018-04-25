@@ -373,7 +373,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
                 finish();
             } else {
-                Toast.makeText(LoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT);
+                Toast.makeText(LoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
             }
         }
 

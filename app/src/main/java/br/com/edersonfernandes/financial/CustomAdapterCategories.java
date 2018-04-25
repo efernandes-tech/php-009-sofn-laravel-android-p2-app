@@ -29,6 +29,8 @@ public class CustomAdapterCategories extends ArrayAdapter<Category> {
             view = LayoutInflater.from(getContext()).inflate(R.layout.list_categories, parent, false);
         }
 
+        view.setLongClickable(true);
+
         TextView txtName = (TextView) view.findViewById(R.id.txt_category_name);
         TextView txtId = (TextView) view.findViewById(R.id.txt_category_id);
 
