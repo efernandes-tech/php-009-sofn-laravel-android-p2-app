@@ -60,9 +60,7 @@ public class Categories extends Fragment implements View.OnClickListener {
         getActivity().setTitle("List Categories");
 
         try {
-
             findCategories();
-
         } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
