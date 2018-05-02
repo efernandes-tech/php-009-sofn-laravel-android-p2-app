@@ -45,4 +45,9 @@ public class UserSession {
         return sharedPreferences.getString("token", "").length() > 0;
     }
 
+    public void clearSession() {
+        // editor.clear().commit();
+        editor.remove("token").commit();
+    }
+
 }
